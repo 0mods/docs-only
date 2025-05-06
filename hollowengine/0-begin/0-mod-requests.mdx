@@ -28,15 +28,9 @@ This page can be changed in future, so don`t think, now - is the final result.
 ```mermaid
 graph TD;
 
-  HE[HollowEngine]; HC[HollowCore]; KFF[KotlinForFabric]; KSFF[KotlinScripForFabric];
+  HE[HollowEngine]; HC[HollowCore];
   
-  HE-->|requires|HC
-  HE-->|requires|KFF
-  HE-->|requires|KSFF
-  
-  KSFF-->|requires|HC
-  
-  HC-->|requires|KFF
+  HE-->|optional|HC
 ```
 :::
 
