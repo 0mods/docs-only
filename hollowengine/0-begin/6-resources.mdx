@@ -1,0 +1,128 @@
+---
+sidebar_position: 6
+
+title: Resources (Assets)
+id: resources
+description: Как правильно размещать ресурсы чтобы потом не было ошибок
+---
+
+import '@site/src/css/pages/img-show.css';
+import ToggleText from '@site/src/packs/toggle_text/toggle_text.js';
+import '@site/src/packs/toggle_text/toggle_button.css';
+
+<div align="center">
+
+# Resources (or `Assets`)
+
+Just put file in folder `assets` - is stupid mistake
+
+<link rel="preload" as="image" href="@site/static/img/doc/titles/Assets0.webp" />
+<div className="show" id="mask">
+
+![resources](@site/static/img/doc/titles/Assets0.webp)
+
+</div>
+</div>
+
+Folder `assets` work like resoucepacks, but without necessity create archives for your resources.
+
+<br />
+
+---
+
+<br />
+
+## Resource Location
+
+Resource Location in Minecraft is often used as an identifier for items, as well as to indicate the location of resource files such as models and textures.
+
+### Structures
+
+Resource Location consists of two strings: namespace and path. Namespace is usually mod id. Path can be a name (for items) or a file path (for resources).
+
+Также, Resource Location можно записать как: `namespace:path`.
+
+### Character case
+
+You should not use capital letters or special characters in the Resource Location. This can cause problems when working with resources, especially on different operating systems.
+
+It is recommended that the Resource Location only contain lowercase letters (English alphabet), numbers, underscores (`_`) and hyphens (`-`).
+
+### Преобразование в путь к файлу
+When a Resource Location points to a mod resource or file, it refers to a specific location in the file system. All resources are loaded the same way.
+
+It is recommended to use the `assets` and `data` folders that are automatically created in the `hollowengine` folder to load your resources, but you can use other methods to load resources, including third-party mods and resource packs.
+<br />
+The `assets` folder is used for client-side resources, including models, textures, translation files, audio, etc.
+<br />
+The `data` folder is used for server-side resources, including recipes, structures, achievements, etc.
+
+The full path is formed as follows:
+- Place your resources at the root path (`.minecraft/hollowengine/assets/` or `.minecraft/hollowengine/data/`).
+- Create a namespace. (mod id)
+- Specify the remaining path to your resource.
+<br />
+For example: `.minecraft/hollowengine/assets/mod_id/models/npcs/example.gltf`.
+<br />
+Here we have the root path: `.minecraft/hollowengine/assets/`.
+<br />
+Namespace: `mod_id`.
+<br />
+The remaining path is `models/npcs/example.gltf`.
+
+And in the script, the path is already specified in the format `namespace:path`, in this case: `mod_id:models/npcs/example.gltf`.
+
+### Models
+
+:::note Models
+<div align="left">
+> List supported formates:
+> - `glTF [.gltf]`
+> - `GLB [.glb]`
+
+All models are specified in **your namespace** in the `models` folder. You can create child folders in there if needed.
+
+Hint: If you need information about a model, try the command `/hollowengine model <resource location>`
+</div>
+:::
+
+<br />
+
+### Textures
+
+:::note Textures
+<div align="left">
+> List of supported textures:
+<br />
+> Static:
+> - `PNF [.png]`
+> - `Jpeg [.jpg, jpeg]`
+<br />
+> Animated:
+> - `GIF [.gif]`
+> - `APNG [.png]` - рекомендуется использовать его, у него лучше цветопередача. 
+
+All textures are specified in **your namespace** in the `textures` folder. You can create child folders in there if needed.
+</div>
+:::
+
+<br />
+
+### Audio, sounds, music
+
+:::note Sounds
+<div align="left">
+> List of supported sounds:
+> - `Vorbis [.ogg]`
+> - `Waveform Audio File [.wav]`
+> - `MP3 [.mp3]`
+
+All sounds are specified in **your namespace** in the `audio` folder. You can create child folders in it if necessary.
+Note: The default `sounds` folder is **not used** to avoid conflicts with other mods and their sounds, HollowCore uses its own loading method to support different formats.
+</div>
+:::
+<br />
+:::warning Warning
+The game will not automatically reload your resources when changing them. After **any** change to resources, you must reload the resources.
+You can do this with the `F3 + T` keyboard shortcut or in the code editor in the `File` tab.
+:::

@@ -1,0 +1,43 @@
+---
+sidebar_position: 0
+
+title: Mod dependencies
+id: mod-requests
+desc: 'NaN'
+---
+
+<div align="center">
+
+:::warning Only for sponsors and testers!
+This page can be changed in future, so don`t think, now - is the final result.
+:::
+
+# Mod dependencies
+
+<div className="show" id="mask">
+
+![title](@site/static/img/doc/titles/ForgeCrush0.webp)
+
+</div>
+
+---
+
+<br />
+
+:::info Mod dependencies in graph
+```mermaid
+graph TD;
+
+  HE[HollowEngine]; HC[HollowCore]; KFF[KotlinForFabric]; KSFF[KotlinScripForFabric];
+  
+  HE-->|requires|HC
+  HE-->|requires|KFF
+  HE-->|requires|KSFF
+  
+  KSFF-->|requires|HC
+  
+  HC-->|requires|KFF
+```
+:::
+
+</div>

@@ -1,0 +1,91 @@
+---
+sidebar_position: 5
+id: audio
+title: Audio Support
+description: I am sound!
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+HollowCore allows you to use not only '.ogg' audio, but also '.mp3' and '.wav'. In addition, there is no need to register sounds.
+
+## Read audio files
+
+<Tabs>
+    <TabItem value="audio-ogg" label="ogg">
+        ```kotlin
+        val audio = OggFormat.read(stream) // stream - everything is like in Java: InputStream, data input stream.
+        ```
+    </TabItem>
+
+    <TabItem value="audio-mp3" label="mp3">
+        ```kotlin
+        val audio = Mp3Format.read(stream) // stream - everything is like in Java: InputStream, data input stream.
+        ```
+    </TabItem>
+
+    <TabItem value="audio-wav" label="wav">
+        ```kotlin
+        val audio = WavFormat.read(stream) // stream - everything is like in Java: InputStream, data input stream.
+        ```
+    </TabItem>
+</Tabs>
+
+## Sound playback
+
+### Creating a Player
+
+<Tabs>
+    <TabItem value="audio-ogg" label="ogg">
+        ```kotlin
+        val audio = OggFormat.read(stream) // stream - everything is like in Java: InputStream, data input stream.
+        val buffer = AudioBuffer(audio) // Create a buffer for your sound
+        val player = AudioPlayer(buffer) // Create a sound player
+        ```
+    </TabItem>
+
+    <TabItem value="audio-mp3" label="mp3">
+        ```kotlin
+        val audio = Mp3Format.read(stream) // stream - everything is like in Java: InputStream, data input stream.
+        val buffer = AudioBuffer(audio) // Create a buffer for your sound
+        val player = AudioPlayer(buffer) // Create a sound player
+        ```
+    </TabItem>
+
+    <TabItem value="audio-wav" label="wav">
+        ```kotlin
+        val audio = WavFormat.read(stream) // stream - everything is like in Java: InputStream, data input stream.
+        val buffer = AudioBuffer(audio) // Create a buffer for your sound
+        val player = AudioPlayer(buffer) // Create a sound player
+        ```
+    </TabItem>
+</Tabs>
+
+### Features for the player
+
+Launch: 'player.play()'
+
+Pause: 'player.pause()'
+
+Stop: 'player.stop()'
+
+Volume: 'player.setVolume(volume: Float)'
+
+Pitch: 'player.setPitch(pitch: Float)'
+
+Loop Audio: 'player.setLooping(loop: Boolean)'
+
+Coordinates: 'player.setPosition(x: Float, y: Float, z: Float)'
+
+Sound relative to player: 'player.setRelative(relative: Boolean)' - If 'true', the coordinates will be used not relative to the world, but relative to the player.
+
+### Variables for the player
+
+'player.isPlaying' - Whether this sound is currently playing.
+
+'player.isPaused' - Is this sound paused.
+
+'player.isStopped' - Is this sound stopped now.
+
+'player.playbackPosition' - "Current second of sound".
